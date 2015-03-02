@@ -12,6 +12,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Every Vagrant virtual environment requires a box to build off of.
   config.vm.box = "puppetlabs/ubuntu-12.04-64-puppet"
 
+  config.vm.synced_folder("puppet/hiera", "/tmp/vagrant-puppet-3/hiera")
 
   config.vm.provision :shell, :inline => "test -d /etc/puppet/modules/rvm || puppet module install maestrodev/rvm"
   config.vm.provision :shell, path: "vagrant_tools/remove_puppet_unless_modern.sh"  # in case the VM has old crap installed...
@@ -30,6 +31,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     puppet.module_path   = "puppet/modules"
     # mostly for modules I create
+
+    puppet.hiera_config_path = "puppet/hiera/node_site_config.yaml"
+    puppet.working_directory = "/tmp/vagrant-puppet-3/"
   end
 
 
