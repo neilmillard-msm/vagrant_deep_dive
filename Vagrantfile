@@ -14,6 +14,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
 
   config.vm.provision :shell, :inline => "test -d /etc/puppet/modules/rvm || puppet module install maestrodev/rvm"
+  config.vm.provision :shell, path: "vagrant_tools/remove_puppet_unless_modern.sh"  # in case the VM has old crap installed...
+  config.vm.provision :shell, path: "vagrant_tools/install_puppet_on_ubuntu.sh"
 
 
   # Enable provisioning with Puppet stand alone.  Puppet manifests
