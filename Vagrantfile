@@ -20,8 +20,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # the file default.pp in the manifests_path directory.
   #
   config.vm.provision "puppet" do |puppet|
-    puppet.manifests_path = "manifests"
+    puppet.manifests_path = "puppet/manifests"
+    # as my Puppet interactions get more complex I like keeping everything in a puppet folder
     puppet.manifest_file  = "site.pp"
+
+    puppet.module_path   = "puppet/modules"
+    # mostly for modules I create
   end
 
 
