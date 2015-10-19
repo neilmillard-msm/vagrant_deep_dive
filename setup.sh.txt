@@ -1,0 +1,2 @@
+vagrant box add geekandi/awsami-2014.03 http://images.geekandi.com/amazon-linux/vagrant-amazon-linux64-2014.03-public-virtualbox.box
+vagrant box add puppetlabs/centos6.4-64bin http://puppet-vagrant-boxes.puppetlabs.com/centos-64-x64-vbox4210.box

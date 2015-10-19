@@ -10,13 +10,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # please see the online documentation at vagrantup.com.
 
   # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.box = "puppetlabs/ubuntu-12.04-64-puppet"
+  config.vm.box = "puppetlabs/centos6.4-64bin"
 
-  config.vm.synced_folder("puppet/hiera", "/tmp/vagrant-puppet-3/hiera")
-
-  config.vm.provision :shell, :inline => "test -d /etc/puppet/modules/rvm || puppet module install maestrodev/rvm"
-  config.vm.provision :shell, path: "vagrant_tools/remove_puppet_unless_modern.sh"  # in case the VM has old crap installed...
-  config.vm.provision :shell, path: "vagrant_tools/install_puppet_on_ubuntu.sh"
+  #config.vm.synced_folder("puppet/hiera", "/tmp/vagrant-puppet-1/hiera")
+  config.vm.synced_folder("puppet", "/etc/puppet")
+  
+  #config.vm.provision :shell, :inline => "test -d /etc/puppet/modules/rvm || puppet module install maestrodev/rvm"
+  #config.vm.provision :shell, path: "vagrant_tools/remove_puppet_unless_modern.sh"  # in case the VM has old crap installed...
+  config.vm.provision :shell, path: "vagrant_tools/install_puppet_on_linuxami.sh"
 
 
   # Enable provisioning with Puppet stand alone.  Puppet manifests
@@ -33,7 +34,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # mostly for modules I create
 
     puppet.hiera_config_path = "puppet/hiera/node_site_config.yaml"
-    puppet.working_directory = "/tmp/vagrant-puppet-3/"
+    puppet.working_directory = "/tmp/vagrant-puppet-1/"
   end
 
 

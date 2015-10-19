@@ -5,7 +5,7 @@
   - json
 
 :yaml:
-  :datadir: "/tmp/vagrant-puppet-2/hiera"
+  :datadir: "/tmp/vagrant-puppet-1/hiera"
 
 :hierarchy:
   - common

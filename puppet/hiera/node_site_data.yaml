@@ -1,4 +1,3 @@
 ---
 
-consul_nodename: "omnibus"
-consul_datacenter: "us-east"
+ntp::autoupdate: true
